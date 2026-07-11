@@ -27,9 +27,9 @@ export const siteConfig: SiteConfig = {
   city: "Alicante",
   province: "Alicante",
   domain: "estores-alicante.com",
-  phone: "600000000",
-  phoneFormatted: "+34 600 000 000",
-  email: "info@estores-alicante.com",
+  phone: "686382891",
+  phoneFormatted: "+34 686 382 891",
+  email: "info@estoresalicante.com",
   schedule: "Lunes a Viernes de 9:00 a 19:00",
   
   municipios: [

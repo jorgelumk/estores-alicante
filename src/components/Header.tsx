@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Link } from '@/i18n/routing';
 import { useTranslations, useLocale } from 'next-intl';
+import { siteConfig } from '@/config/siteConfig';
 
 export default function Header() {
   const t = useTranslations('Header');
@@ -137,6 +138,12 @@ export default function Header() {
             {t('blog')}
           </Link>
 
+          {/* Phone Link */}
+          <a href={`tel:+34${siteConfig.phone}`} className="flex items-center gap-1 hover:text-orange-200 transition-colors text-white font-bold" onClick={closeMenus}>
+            <span className="text-base">📞</span>
+            <span>{siteConfig.phoneFormatted.replace('+34 ', '')}</span>
+          </a>
+
           {/* Quote Button */}
           <Link 
             href="/presupuesto" 
@@ -258,6 +265,12 @@ export default function Header() {
           <Link href="/blog" className="block py-2 font-bold text-lg hover:text-orange-200" onClick={closeMenus}>
             {t('blog')}
           </Link>
+
+          {/* Phone Link (Mobile) */}
+          <a href={`tel:+34${siteConfig.phone}`} className="flex items-center gap-2 py-2 font-bold text-lg hover:text-orange-200 text-white" onClick={closeMenus}>
+            <span className="text-xl">📞</span>
+            <span>{siteConfig.phoneFormatted.replace('+34 ', '')}</span>
+          </a>
 
           {/* Quote Button */}
           <div className="pt-4">

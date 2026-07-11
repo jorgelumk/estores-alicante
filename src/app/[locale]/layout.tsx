@@ -107,7 +107,7 @@ export default async function RootLayout({
           <CookieBanner />
         </NextIntlClientProvider>
         <GoogleAnalytics gaId="G-XYZ1234567" />
-        <GoogleTagManager gtmId="GTM-XYZ1234" />
+        <GoogleTagManager gtmId="GTM-KQRGTQ3F" />
       </body>
     </html>
   );

@@ -3,6 +3,8 @@ import type {Metadata} from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import PresupuestoForm from '@/components/PresupuestoForm';
 
+import { siteConfig } from '@/config/siteConfig';
+
 export async function generateMetadata({params}: {params: Promise<{locale: string}>}): Promise<Metadata> {
   const {locale} = await params;
   return {
@@ -71,14 +73,18 @@ export default async function PresupuestoPage({params}: {params: Promise<{locale
               <div className="flex items-center space-x-4">
                 <span className="text-3xl">📞</span>
                 <div>
-                  <p className="font-bold text-gray-900 text-lg">{t('contact_phone')}</p>
-                  <p className="text-sm text-gray-500">{t('contact_hours')}</p>
+                  <a href={`tel:+34${siteConfig.phone}`} className="block font-bold text-gray-900 text-lg hover:text-[var(--color-primary)] transition-colors">
+                    {siteConfig.phoneFormatted}
+                  </a>
+                  <p className="text-sm text-gray-500">{siteConfig.schedule}</p>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
                 <span className="text-3xl">✉️</span>
                 <div>
-                  <p className="font-bold text-gray-900 text-lg">{t('contact_email')}</p>
+                  <a href={`mailto:${siteConfig.email}`} className="block font-bold text-gray-900 text-lg hover:text-[var(--color-primary)] transition-colors">
+                    {siteConfig.email}
+                  </a>
                 </div>
               </div>
             </div>

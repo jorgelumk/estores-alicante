@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
+import { siteConfig } from '@/config/siteConfig';
 
 export default function Footer() {
   const t = useTranslations('Footer');
@@ -39,7 +40,7 @@ export default function Footer() {
             <div className="w-9 h-9 rounded-lg bg-[var(--color-primary)] flex items-center justify-center text-white font-black text-base shadow-lg">E</div>
             <span className="text-xl font-black tracking-tight">{h('home')}</span>
           </div>
-          <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
+          <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
             {t('about')}
           </p>
           <p className="text-xs font-semibold text-orange-400 uppercase tracking-widest">
@@ -48,13 +49,13 @@ export default function Footer() {
 
           {/* Contact info */}
           <div className="space-y-2 pt-2">
-            <a href="tel:+34965000000" className="flex items-center gap-2.5 text-gray-300 text-sm hover:text-white transition-colors group">
+            <a href={`tel:+34${siteConfig.phone}`} className="flex items-center gap-2.5 text-gray-300 text-sm hover:text-white transition-colors group">
               <span className="w-7 h-7 rounded-md bg-white/5 group-hover:bg-[var(--color-primary)] flex items-center justify-center transition-colors">
                 📞
               </span>
               {t('phone')}
             </a>
-            <a href="mailto:info@estoresalicante.com" className="flex items-center gap-2.5 text-gray-300 text-sm hover:text-white transition-colors group">
+            <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-2.5 text-gray-300 text-sm hover:text-white transition-colors group">
               <span className="w-7 h-7 rounded-md bg-white/5 group-hover:bg-[var(--color-primary)] flex items-center justify-center transition-colors">
                 ✉️
               </span>
