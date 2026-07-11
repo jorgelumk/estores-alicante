@@ -636,6 +636,9 @@
   "Presupuesto": {
     "h1": "Request a Made to Measure Quote",
     "description": "Fill in the form and we will send you a personalised quote within 24 hours. No obligation.",
+    "contact_phone": "+34 686 382 891",
+    "contact_hours": "Monday to Friday, 9:00 - 19:00",
+    "contact_email": "info@estoresalicante.com",
     "cta": "Send request",
     "name_label": "Full name",
     "name_placeholder": "Your name",

@@ -31,6 +31,33 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
 
   return (
     <main className="flex min-h-screen flex-col bg-white">
+      {/* JSON-LD Product Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": locale === 'es' ? "Estor sin taladrar Screen 1%" : "No-Drill Screen 1% Blind",
+            "image": `https://estoresalicante.com/images/screen_apartamento_benidorm.jpg`,
+            "description": locale === 'es' ? "Estor screen 1% sin taladrar la ventana. Instalación rápida sin agujeros por clips, privacidad máxima al mejor precio de Alicante." : "Screen 1% blind installed without drilling. Quick hole-free setup via clips, maximum privacy at the best price in Alicante.",
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "EUR",
+              "price": "24.00",
+              "availability": "https://schema.org/InStock",
+              "url": `https://estoresalicante.com/${locale}/estores-sin-taladrar-screen-1`
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5.00",
+              "reviewCount": "10"
+            }
+          })
+        }}
+      />
+  
+        
       {product && <ProductSchema product={product} locale={locale} />}
       {/* 1. Hero Section */}
       <section className="relative h-[55vh] min-h-[400px] flex items-center justify-center text-center px-4 overflow-hidden">

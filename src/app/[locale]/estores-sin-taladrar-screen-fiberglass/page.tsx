@@ -31,6 +31,33 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
 
   return (
     <main className="flex min-h-screen flex-col bg-white">
+      {/* JSON-LD Product Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": locale === 'es' ? "Estor sin taladrar Screen Fiberglass" : "No-Drill Screen Fiberglass Blind",
+            "image": `https://estoresalicante.com/images/estores-sin-taladrar-alquiler.jpg`,
+            "description": locale === 'es' ? "Estor screen de fibra de vidrio sin taladrar la ventana. Aislamiento térmico premium y protección ignífuga sin agujeros. Alicante." : "Fiberglass screen blind installed without drilling. Premium thermal insulation and fireproof protection with no holes. Alicante.",
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "EUR",
+              "price": "30.60",
+              "availability": "https://schema.org/InStock",
+              "url": `https://estoresalicante.com/${locale}/estores-sin-taladrar-screen-fiberglass`
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5.00",
+              "reviewCount": "12"
+            }
+          })
+        }}
+      />
+  
+        
       {product && <ProductSchema product={product} locale={locale} />}
       {/* 1. Hero Section */}
       <section className="relative h-[55vh] min-h-[400px] flex items-center justify-center text-center px-4 overflow-hidden">

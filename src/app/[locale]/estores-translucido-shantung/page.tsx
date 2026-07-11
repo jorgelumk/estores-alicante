@@ -31,6 +31,33 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
 
   return (
     <main className="flex min-h-screen flex-col bg-white">
+      {/* JSON-LD Product Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": locale === 'es' ? "Estor Enrollable Translúcido Shantung" : "Shantung Translucent Roller Blind",
+            "image": `https://estoresalicante.com/images/cortinas-enrollables-medida.jpg`,
+            "description": locale === 'es' ? "Estores enrollables translúcidos modelo Shantung con textura rayada decorativa. Máxima elegancia y confort en Alicante." : "Shantung translucent roller blinds with decorative striped texture. Maximum elegance and light diffusion in Alicante.",
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "EUR",
+              "price": "18.15",
+              "availability": "https://schema.org/InStock",
+              "url": `https://estoresalicante.com/${locale}/estores-translucido-shantung`
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5.00",
+              "reviewCount": "43"
+            }
+          })
+        }}
+      />
+  
+        
       {product && <ProductSchema product={product} locale={locale} />}
       {/* 1. Hero Section */}
       <section className="relative h-[55vh] min-h-[400px] flex items-center justify-center text-center px-4 overflow-hidden">

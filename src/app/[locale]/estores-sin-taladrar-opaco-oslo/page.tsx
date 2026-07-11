@@ -31,6 +31,33 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
 
   return (
     <main className="flex min-h-screen flex-col bg-white">
+      {/* JSON-LD Product Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": locale === 'es' ? "Estor sin taladrar Opaco Oslo" : "No-Drill Oslo Blackout Blind",
+            "image": `https://estoresalicante.com/images/estores-sin-taladrar-alquiler.jpg`,
+            "description": locale === 'es' ? "Estor opaco modelo Oslo sin taladrar la ventana. Bloqueo total de luz sin agujeros para dormitorios, confeccionado a medida en Alicante." : "Oslo blackout blind installed without drilling. Total light block with no holes for bedrooms, made to measure in Alicante.",
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "EUR",
+              "price": "24.20",
+              "availability": "https://schema.org/InStock",
+              "url": `https://estoresalicante.com/${locale}/estores-sin-taladrar-opaco-oslo`
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5.00",
+              "reviewCount": "8"
+            }
+          })
+        }}
+      />
+  
+        
       {product && <ProductSchema product={product} locale={locale} />}
       {/* 1. Hero Section */}
       <section className="relative h-[55vh] min-h-[400px] flex items-center justify-center text-center px-4 overflow-hidden">

@@ -31,6 +31,33 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
 
   return (
     <main className="flex min-h-screen flex-col bg-white">
+      {/* JSON-LD Product Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": locale === 'es' ? "Estor Enrollable Translúcido Valencia" : "Valencia Translucent Roller Blind",
+            "image": `https://estoresalicante.com/images/estores_traslucidos.jpg`,
+            "description": locale === 'es' ? "Estores enrollables translúcidos modelo Valencia. Tamizan la luz solar con total intimidad interior. Confeccionados a medida en Alicante." : "Valencia translucent roller blinds. Soften solar light with complete indoor privacy. Made to measure in Alicante.",
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "EUR",
+              "price": "16.50",
+              "availability": "https://schema.org/InStock",
+              "url": `https://estoresalicante.com/${locale}/estores-translucido-valencia`
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.98",
+              "reviewCount": "66"
+            }
+          })
+        }}
+      />
+  
+        
       {product && <ProductSchema product={product} locale={locale} />}
       {/* 1. Hero Section */}
       <section className="relative h-[55vh] min-h-[400px] flex items-center justify-center text-center px-4 overflow-hidden">

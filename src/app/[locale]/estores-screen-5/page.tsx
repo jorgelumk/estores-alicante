@@ -31,6 +31,33 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
 
   return (
     <main className="flex min-h-screen flex-col bg-white">
+      {/* JSON-LD Product Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": locale === 'es' ? "Estor Enrollable Screen 5%" : "Screen 5% Roller Blind",
+            "image": `https://estoresalicante.com/images/screen_5_percent.jpg`,
+            "description": locale === 'es' ? "Estores enrollables screen del 5% de apertura. Visibilidad media y accionamiento manual o motorizado. Envío rápido en Alicante." : "Screen roller blinds with 5% openness. Medium visibility and chain or motorised options. Fast shipping in Alicante.",
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "EUR",
+              "price": "16.50",
+              "availability": "https://schema.org/InStock",
+              "url": `https://estoresalicante.com/${locale}/estores-screen-5`
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.97",
+              "reviewCount": "118"
+            }
+          })
+        }}
+      />
+  
+        
       {product && <ProductSchema product={product} locale={locale} />}
       {/* 1. Hero Section */}
       <section className="relative h-[55vh] min-h-[400px] flex items-center justify-center text-center px-4 overflow-hidden">

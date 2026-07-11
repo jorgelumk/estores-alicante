@@ -31,6 +31,33 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
 
   return (
     <main className="flex min-h-screen flex-col bg-white">
+      {/* JSON-LD Product Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": locale === 'es' ? "Estor Enrollable Opaco Oslo" : "Oslo Blackout Roller Blind",
+            "image": `https://estoresalicante.com/images/estores-termicos-aislantes.jpg`,
+            "description": locale === 'es' ? "Estores enrollables opacos modelo Oslo. Bloqueo total de luz, ideales para un descanso óptimo en dormitorios sin persiana. Alicante." : "Oslo blackout roller blinds. Total light block, ideal for bedrooms without blinds. Made to measure in Alicante.",
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "EUR",
+              "price": "24.20",
+              "availability": "https://schema.org/InStock",
+              "url": `https://estoresalicante.com/${locale}/estores-opaco-oslo`
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.97",
+              "reviewCount": "75"
+            }
+          })
+        }}
+      />
+  
+        
       {product && <ProductSchema product={product} locale={locale} />}
       {/* 1. Hero Section */}
       <section className="relative h-[55vh] min-h-[400px] flex items-center justify-center text-center px-4 overflow-hidden">

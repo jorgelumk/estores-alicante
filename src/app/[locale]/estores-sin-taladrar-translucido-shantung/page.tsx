@@ -31,6 +31,33 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
 
   return (
     <main className="flex min-h-screen flex-col bg-white">
+      {/* JSON-LD Product Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": locale === 'es' ? "Estor sin taladrar Translúcido Shantung" : "No-Drill Shantung Translucent Blind",
+            "image": `https://estoresalicante.com/images/estores_sin_taladrar.jpg`,
+            "description": locale === 'es' ? "Estor translúcido modelo Shantung sin taladrar la ventana. Instalación rápida sin agujeros por clips con textura rayada en Alicante." : "Shantung translucent blind installed without drilling. Quick hole-free setup via clips with elegant striped texture in Alicante.",
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "EUR",
+              "price": "18.15",
+              "availability": "https://schema.org/InStock",
+              "url": `https://estoresalicante.com/${locale}/estores-sin-taladrar-translucido-shantung`
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5.00",
+              "reviewCount": "15"
+            }
+          })
+        }}
+      />
+  
+        
       {product && <ProductSchema product={product} locale={locale} />}
       {/* 1. Hero Section */}
       <section className="relative h-[55vh] min-h-[400px] flex items-center justify-center text-center px-4 overflow-hidden">

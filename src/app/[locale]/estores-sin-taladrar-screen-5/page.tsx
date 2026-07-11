@@ -31,6 +31,33 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
 
   return (
     <main className="flex min-h-screen flex-col bg-white">
+      {/* JSON-LD Product Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": locale === 'es' ? "Estor sin taladrar Screen 5%" : "No-Drill Screen 5% Blind",
+            "image": `https://estoresalicante.com/images/estores-enrollables-medida.jpg`,
+            "description": locale === 'es' ? "Estor screen 5% sin taladrar la ventana. Instalación rápida sin agujeros por clips, a medida al mejor precio de Alicante." : "Screen 5% blind installed without drilling. Quick hole-free setup via clips, custom sizes at the best price in Alicante.",
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "EUR",
+              "price": "16.50",
+              "availability": "https://schema.org/InStock",
+              "url": `https://estoresalicante.com/${locale}/estores-sin-taladrar-screen-5`
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.95",
+              "reviewCount": "39"
+            }
+          })
+        }}
+      />
+  
+        
       {product && <ProductSchema product={product} locale={locale} />}
       {/* 1. Hero Section */}
       <section className="relative h-[55vh] min-h-[400px] flex items-center justify-center text-center px-4 overflow-hidden">

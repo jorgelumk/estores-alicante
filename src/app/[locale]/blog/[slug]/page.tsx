@@ -259,8 +259,8 @@ export default async function BlogPostPage({ params }: PageProps) {
               [&>h3]:text-xl [&>h3]:font-bold [&>h3]:text-[#1A1A2E] [&>h3]:mt-8 [&>h3]:mb-3 [&>h3]:scroll-mt-24
               [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:mb-6 [&>ul]:space-y-2 [&>ul]:text-gray-600
               [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:mb-6 [&>ol]:space-y-2 [&>ol]:text-gray-600
-              [&_a]:text-[var(--color-primary)] [&_a]:font-semibold [&_a]:underline hover:[&_a]:text-[#c44105]
-              [&_a.inline-block]:!text-white [&_a.inline-block]:!no-underline
+              [&_a:not([class*='bg-']):not([class*='inline-block'])]:text-[var(--color-primary)] [&_a:not([class*='bg-']):not([class*='inline-block'])]:font-semibold [&_a:not([class*='bg-']):not([class*='inline-block'])]:underline hover:[&_a:not([class*='bg-']):not([class*='inline-block'])]:text-[#c44105]
+              [&_a[class*='bg-']]:!text-white [&_a[class*='bg-']]:!no-underline
               [&_strong]:font-bold [&_strong]:text-[#1A1A2E]"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />

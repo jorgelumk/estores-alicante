@@ -31,6 +31,33 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
 
   return (
     <main className="flex min-h-screen flex-col bg-white">
+      {/* JSON-LD Product Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": locale === 'es' ? "Estor Enrollable Screen Fiberglass" : "Fiberglass Screen Roller Blind",
+            "image": `https://estoresalicante.com/images/estor_screen_fiberglass.jpg`,
+            "description": locale === 'es' ? "Consigue el mejor aislamiento térmico con nuestros estores screen de fibra de vidrio a medida. Resistente, seguro e ignífugo." : "Get the best thermal insulation with our made-to-measure fiberglass screen blinds. Strong, safe, and fireproof.",
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "EUR",
+              "price": "25.80",
+              "availability": "https://schema.org/InStock",
+              "url": `https://estoresalicante.com/${locale}/estores-screen-fiberglass`
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.99",
+              "reviewCount": "146"
+            }
+          })
+        }}
+      />
+  
+        
       {product && <ProductSchema product={product} locale={locale} />}
       {/* 1. Hero Section */}
       <section className="relative h-[55vh] min-h-[400px] flex items-center justify-center text-center px-4 overflow-hidden">
