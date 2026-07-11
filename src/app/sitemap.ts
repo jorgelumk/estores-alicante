@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/mapa-del-sitio'
   ];
 
-  const staticEntries: MetadataRoute.Sitemap = staticPages.map((page) => ({
+  const staticEntriesEs: MetadataRoute.Sitemap = staticPages.map((page) => ({
     url: `${baseUrl}/es${page}`,
     lastModified: new Date(),
     changeFrequency: page === '' ? 'weekly' : 'monthly',
@@ -28,8 +28,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   }));
 
+  const staticEntriesEn: MetadataRoute.Sitemap = staticPages.map((page) => ({
+    url: `${baseUrl}/en${page}`,
+    lastModified: new Date(),
+    changeFrequency: page === '' ? 'weekly' : 'monthly',
+    priority: page === '' ? 0.9 : 0.7,
+    alternates: {
+      languages: {
+        es: `${baseUrl}/es${page}`,
+        en: `${baseUrl}/en${page}`,
+      },
+    },
+  }));
+
   // Dynamic Product pages
-  const productEntries: MetadataRoute.Sitemap = products.map((product) => ({
+  const productEntriesEs: MetadataRoute.Sitemap = products.map((product) => ({
     url: `${baseUrl}/es/${product.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
@@ -42,8 +55,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   }));
 
+  const productEntriesEn: MetadataRoute.Sitemap = products.map((product) => ({
+    url: `${baseUrl}/en/${product.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.8,
+    alternates: {
+      languages: {
+        es: `${baseUrl}/es/${product.slug}`,
+        en: `${baseUrl}/en/${product.slug}`,
+      },
+    },
+  }));
+
   // Dynamic Blog pages
-  const blogEntries: MetadataRoute.Sitemap = Object.values(postsDataEs)
+  const blogEntriesEs: MetadataRoute.Sitemap = Object.values(postsDataEs)
     .map((post) => ({
       url: `${baseUrl}/es/blog/${post.slug}`,
       lastModified: new Date(),
@@ -57,5 +83,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
   }));
 
-  return [...staticEntries, ...productEntries, ...blogEntries];
+  const blogEntriesEn: MetadataRoute.Sitemap = Object.values(postsDataEs)
+    .map((post) => ({
+      url: `${baseUrl}/en/blog/${post.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+      alternates: {
+        languages: {
+          es: `${baseUrl}/es/blog/${post.slug}`,
+          en: `${baseUrl}/en/blog/${post.slug}`,
+        },
+      },
+  }));
+
+  return [
+    ...staticEntriesEs,
+    ...staticEntriesEn,
+    ...productEntriesEs,
+    ...productEntriesEn,
+    ...blogEntriesEs,
+    ...blogEntriesEn
+  ];
 }
