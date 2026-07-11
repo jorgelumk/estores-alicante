@@ -61,6 +61,9 @@ export async function generateMetadata({
     icons: {
       icon: '/favicon.ico',
     },
+    verification: {
+      google: 'nsYj2rrnQ5sqV3uWSIv2vgBALtLFdoD18EOtb_DSRnQ',
+    },
   };
 }
 

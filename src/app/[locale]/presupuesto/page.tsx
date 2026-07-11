@@ -57,9 +57,41 @@ export default async function PresupuestoPage({params}: {params: Promise<{locale
       </section>
 
       {/* Form */}
-      <section className="py-14 px-4">
-        <div className="max-w-3xl mx-auto">
-          <PresupuestoForm locale={locale} />
+      <section className="py-14 px-4 max-w-6xl mx-auto w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+          <div className="lg:col-span-2">
+            <PresupuestoForm locale={locale} />
+          </div>
+          
+          {/* Sidebar Contact Card */}
+          <div className="bg-gradient-to-br from-[#1A1A2E] to-[#252542] text-white p-8 md:p-10 rounded-2xl shadow-lg border border-white/5 space-y-8 sticky top-28">
+            <div>
+              <h3 className="text-xl font-extrabold mb-1">Contacta con nosotros</h3>
+              <p className="text-sm text-gray-400">¿Tienes dudas con tu configuración? Te ayudamos</p>
+            </div>
+            
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <span className="text-2xl bg-white/10 w-10 h-10 rounded-lg flex items-center justify-center">📞</span>
+                <div>
+                  <a href={`tel:+34${siteConfig.phone}`} className="block font-bold text-lg hover:text-[var(--color-primary)] transition-colors">
+                    {siteConfig.phoneFormatted}
+                  </a>
+                  <p className="text-xs text-gray-400 mt-1">{siteConfig.schedule}</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 border-t border-white/10 pt-6">
+                <span className="text-2xl bg-white/10 w-10 h-10 rounded-lg flex items-center justify-center">✉️</span>
+                <div>
+                  <a href={`mailto:${siteConfig.email}`} className="block font-bold text-lg hover:text-[var(--color-primary)] transition-colors break-all">
+                    {siteConfig.email}
+                  </a>
+                  <p className="text-xs text-gray-400 mt-1">Soporte directo por email y WhatsApp</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
