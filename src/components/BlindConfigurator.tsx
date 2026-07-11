@@ -86,12 +86,48 @@ export default function BlindConfigurator({
   };
 
   // Submit quote
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus('submitting');
-    setTimeout(() => {
-      setFormStatus('success');
-    }, 1500);
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: 'presupuesto',
+          personalData: {
+            name,
+            email,
+            phone,
+            municipio: city,
+            comments: `Configurador interactivo. Tipo: ${blindType === 'standard' ? 'Estor Enrollable' : 'Estor Sin Taladrar'}`
+          },
+          blinds: [
+            {
+              model: selectedFabricColor.label.es,
+              aperture: blindType,
+              drive: driveType || drivePosition,
+              width,
+              height,
+              quantity: 1
+            }
+          ],
+        }),
+      });
+
+      if (response.ok) {
+        setFormStatus('success');
+      } else {
+        console.error('Error enviando formulario');
+        setFormStatus('idle');
+      }
+    } catch (error) {
+      console.error('Error enviando formulario:', error);
+      setFormStatus('idle');
+    }
   };
 
   // Swatch configuration based on blind type

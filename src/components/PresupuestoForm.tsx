@@ -149,10 +149,33 @@ export default function PresupuestoForm({ locale }: Props) {
   const addBlind = () => setBlinds(prev => [...prev, newBlind()]);
   const removeBlind = (id: string) => setBlinds(prev => prev.filter(b => b.id !== id));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
-    setTimeout(() => setStatus('success'), 1500);
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: 'presupuesto',
+          personalData,
+          blinds,
+        }),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+      } else {
+        console.error('Error enviando presupuesto');
+        setStatus('idle');
+      }
+    } catch (error) {
+      console.error('Error enviando presupuesto:', error);
+      setStatus('idle');
+    }
   };
 
   if (status === 'success') {

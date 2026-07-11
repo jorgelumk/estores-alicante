@@ -7,14 +7,39 @@ export default function ContactForm() {
   const t = useTranslations('ContactForm');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('submitting');
-    // Simulate API call
-    setTimeout(() => {
-      setStatus('success');
-      // Optional: Reset form here if needed
-    }, 1500);
+    
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      type: 'contact',
+      name: formData.get('name'),
+      phone: formData.get('phone'),
+      email: formData.get('email'),
+      address: formData.get('address'),
+      details: formData.get('details'),
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+      } else {
+        console.error('Error enviando formulario');
+        setStatus('idle');
+      }
+    } catch (error) {
+      console.error('Error enviando formulario:', error);
+      setStatus('idle');
+    }
   };
 
   return (

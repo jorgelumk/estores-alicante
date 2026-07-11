@@ -260,6 +260,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:mb-6 [&>ul]:space-y-2 [&>ul]:text-gray-600
               [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:mb-6 [&>ol]:space-y-2 [&>ol]:text-gray-600
               [&_a]:text-[var(--color-primary)] [&_a]:font-semibold [&_a]:underline hover:[&_a]:text-[#c44105]
+              [&_a.inline-block]:!text-white [&_a.inline-block]:!no-underline
               [&_strong]:font-bold [&_strong]:text-[#1A1A2E]"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
