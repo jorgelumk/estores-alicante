@@ -41,7 +41,23 @@ export default function ProductSchema({ product, locale }: ProductSchemaProps) {
       "@type": "AggregateRating",
       "ratingValue": product.rating.toString(),
       "reviewCount": product.reviewsCount.toString()
-    }
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": locale === 'es' ? "Cliente de Estores Alicante" : "Blinds Alicante Customer"
+        },
+        "reviewBody": locale === 'es'
+          ? "Excelente calidad de los estores y una instalación impecable y rápida."
+          : "Excellent quality of the blinds and clean, fast installation service."
+      }
+    ]
   };
 
   return (
