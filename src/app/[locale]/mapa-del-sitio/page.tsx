@@ -55,7 +55,7 @@ export default async function SitemapPage({ params }: { params: Promise<{ locale
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {products.map(product => (
                 <li key={product.id}>
-                  <Link href={`/${product.slug}`} className="text-gray-600 hover:text-[var(--color-primary)] hover:underline transition-colors">
+                  <Link href={`/${product.slug}` as any} className="text-gray-600 hover:text-[var(--color-primary)] hover:underline transition-colors">
                     {locale === 'es' ? product.name.es : product.name.en}
                   </Link>
                 </li>
@@ -84,7 +84,7 @@ export default async function SitemapPage({ params }: { params: Promise<{ locale
             <ul className="grid grid-cols-1 gap-3">
               {publishedPosts.map(post => (
                 <li key={post.slug}>
-                  <Link href={`/blog/${post.slug}`} className="text-gray-600 hover:text-[var(--color-primary)] hover:underline transition-colors">
+                  <Link href={`/blog/${post.slug}` as any} className="text-gray-600 hover:text-[var(--color-primary)] hover:underline transition-colors">
                     {post.title}
                   </Link>
                 </li>

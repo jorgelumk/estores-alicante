@@ -308,7 +308,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
             return (
               <article key={relatedPost.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow flex flex-col h-full group">
-                <Link href={relatedHref} className="relative h-48 block w-full bg-gray-100 overflow-hidden">
+                <Link href={relatedHref as any} className="relative h-48 block w-full bg-gray-100 overflow-hidden">
                   <Image
                     src={relatedPost.image}
                     alt={relatedPost.title}
@@ -320,7 +320,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   <span className="text-[10px] font-black text-[var(--color-primary)] bg-orange-50 uppercase tracking-widest px-2.5 py-1 rounded-full w-fit mb-3">
                     {relatedPost.category}
                   </span>
-                  <Link href={relatedHref} className="hover:text-[var(--color-primary)] transition-colors">
+                  <Link href={relatedHref as any} className="hover:text-[var(--color-primary)] transition-colors">
                     <h3 className="text-lg font-bold text-[#1A1A2E] mb-2 leading-snug">
                       {relatedPost.title}
                     </h3>
@@ -330,7 +330,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   </p>
                   <div className="pt-4 border-t border-gray-50 flex items-center justify-between">
                     <span className="text-xs text-gray-400">{relatedPost.date}</span>
-                    <Link href={relatedHref} className="text-sm font-semibold text-[var(--color-primary)] hover:underline">
+                    <Link href={relatedHref as any} className="text-sm font-semibold text-[var(--color-primary)] hover:underline">
                       {t('read_more')} →
                     </Link>
                   </div>

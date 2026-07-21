@@ -40,7 +40,7 @@ export default function Breadcrumbs({ items, light = false }: BreadcrumbsProps) 
                 </span>
               ) : (
                 <Link
-                  href={item.href}
+                  href={item.href as any}
                   className={`transition-colors duration-200 ${
                     light ? 'hover:text-white underline decoration-white/35 underline-offset-4' : 'hover:text-[var(--color-primary)]'
                   }`}

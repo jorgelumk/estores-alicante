@@ -103,14 +103,14 @@ export default async function BlogPage({params}: {params: Promise<{locale: strin
                     <span className="text-[10px] text-gray-400 font-semibold">{post.readTime}</span>
                   </div>
                   <h2 className="text-lg font-bold text-[#1A1A2E] mb-3 leading-snug group-hover:text-[var(--color-primary)] transition-colors cursor-pointer">
-                    <Link href={postHref}>{post.title}</Link>
+                    <Link href={postHref as any}>{post.title}</Link>
                   </h2>
                   <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
                     {post.excerpt}
                   </p>
                   <div className="pt-4 border-t border-gray-50 flex justify-between items-center">
                     <span className="text-xs text-gray-400">{post.date}</span>
-                    <Link href={postHref} className="text-sm font-bold text-[var(--color-primary)] hover:underline">
+                    <Link href={postHref as any} className="text-sm font-bold text-[var(--color-primary)] hover:underline">
                       {t('read_more')} →
                     </Link>
                   </div>

@@ -87,7 +87,7 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
               : 'Extreme solar protection and high opacity (1% openness) without being blackout. The perfect solution to sleep with dimmed light.'}
           </p>
           <div className="pt-4">
-            <Link href="#contact-form" className="bg-[var(--color-primary)] hover:bg-[#c44105] text-white font-bold py-4 px-10 rounded-lg text-lg transition-transform hover:scale-105 shadow-lg inline-block">
+            <Link href={"#contact-form" as any} className="bg-[var(--color-primary)] hover:bg-[#c44105] text-white font-bold py-4 px-10 rounded-lg text-lg transition-transform hover:scale-105 shadow-lg inline-block">
               {locale === 'es' ? 'Calcular Precio' : 'Calculate Price'}
             </Link>
           </div>

@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from 'react';
-import { Link } from '@/i18n/routing';
+import { Link, usePathname } from '@/i18n/routing';
 import { useTranslations, useLocale } from 'next-intl';
 import { siteConfig } from '@/config/siteConfig';
 
 export default function Header() {
   const t = useTranslations('Header');
   const locale = useLocale();
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
@@ -70,7 +71,7 @@ export default function Header() {
               {estoresLinks.map((link) => (
                 <Link 
                   key={link.href} 
-                  href={link.href} 
+                  href={link.href as any} 
                   className="block px-4 py-2 hover:bg-orange-50 hover:text-[var(--color-primary)] transition-colors"
                   onClick={closeMenus}
                 >
@@ -94,7 +95,7 @@ export default function Header() {
               {cortinasLinks.map((link) => (
                 <Link 
                   key={link.href} 
-                  href={link.href} 
+                  href={link.href as any} 
                   className="block px-4 py-2 hover:bg-orange-50 hover:text-[var(--color-primary)] transition-colors"
                   onClick={closeMenus}
                 >
@@ -118,7 +119,7 @@ export default function Header() {
               {locationsLinks.map((link) => (
                 <Link 
                   key={link.href} 
-                  href={link.href} 
+                  href={link.href as any} 
                   className="block px-4 py-2 hover:bg-orange-50 hover:text-[var(--color-primary)] transition-colors"
                   onClick={closeMenus}
                 >
@@ -158,9 +159,9 @@ export default function Header() {
         <div className="flex items-center space-x-4">
           {/* Language Switcher */}
           <div className="flex space-x-2 text-sm font-bold bg-white/10 px-3 py-1.5 rounded-lg border border-white/15">
-            <Link href="/" locale="es" className={`hover:text-orange-200 transition-colors ${locale === 'es' ? 'text-orange-300 font-extrabold underline' : 'text-white'}`}>ES</Link>
+            <Link href={pathname as any} locale="es" className={`hover:text-orange-200 transition-colors ${locale === 'es' ? 'text-orange-300 font-extrabold underline' : 'text-white'}`}>ES</Link>
             <span className="text-white/30">|</span>
-            <Link href="/" locale="en" className={`hover:text-orange-200 transition-colors ${locale === 'en' ? 'text-orange-300 font-extrabold underline' : 'text-white'}`}>EN</Link>
+            <Link href={pathname as any} locale="en" className={`hover:text-orange-200 transition-colors ${locale === 'en' ? 'text-orange-300 font-extrabold underline' : 'text-white'}`}>EN</Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -195,7 +196,7 @@ export default function Header() {
                 {estoresLinks.map((link) => (
                   <Link 
                     key={link.href} 
-                    href={link.href} 
+                    href={link.href as any} 
                     className="block py-2 text-white/80 hover:text-white"
                     onClick={closeMenus}
                   >
@@ -220,7 +221,7 @@ export default function Header() {
                 {cortinasLinks.map((link) => (
                   <Link 
                     key={link.href} 
-                    href={link.href} 
+                    href={link.href as any} 
                     className="block py-2 text-white/80 hover:text-white"
                     onClick={closeMenus}
                   >
@@ -245,7 +246,7 @@ export default function Header() {
                 {locationsLinks.map((link) => (
                   <Link 
                     key={link.href} 
-                    href={link.href} 
+                    href={link.href as any} 
                     className="block py-2 text-white/80 hover:text-white"
                     onClick={closeMenus}
                   >

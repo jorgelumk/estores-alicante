@@ -87,7 +87,7 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
               : 'The ideal 5% openness to balance natural light input, thermal protection, and excellent outdoor views.'}
           </p>
           <div className="pt-4">
-            <Link href="#contact-form" className="bg-[var(--color-primary)] hover:bg-[#c44105] text-white font-bold py-4 px-10 rounded-lg text-lg transition-transform hover:scale-105 shadow-lg inline-block">
+            <Link href={"#contact-form" as any} className="bg-[var(--color-primary)] hover:bg-[#c44105] text-white font-bold py-4 px-10 rounded-lg text-lg transition-transform hover:scale-105 shadow-lg inline-block">
               {locale === 'es' ? 'Presupuesto a Medida' : 'Custom Estimate'}
             </Link>
           </div>

@@ -361,7 +361,7 @@ export default function ProductCatalog({
                           <span className="text-yellow-500">★ {p.rating} ({p.reviewsCount})</span>
                         </div>
                         <h3 className="text-base font-extrabold text-[#1A1A2E] leading-snug group-hover:text-[var(--color-primary)] transition-colors">
-                          <Link href={`/${p.slug}`}>
+                          <Link href={`/${p.slug}` as any}>
                             {locale === 'es' ? p.name.es : p.name.en}
                           </Link>
                         </h3>
@@ -393,7 +393,7 @@ export default function ProductCatalog({
                         </div>
 
                         <Link
-                          href={`/${p.slug}`}
+                          href={`/${p.slug}` as any}
                           className="block text-center w-full bg-[#1A1A2E] hover:bg-[var(--color-primary)] text-white font-bold py-2.5 px-4 rounded-xl text-xs transition-colors shadow-sm"
                         >
                           {locale === 'es' ? 'Personalizar y Comprar' : 'Customize & Buy'}

@@ -259,7 +259,7 @@ export default async function HomePage({params}: {params: Promise<{locale: strin
                   href: '/torrevieja'
                 },
               ].map((loc, idx) => (
-                <Link key={idx} href={loc.href} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4 hover:border-[var(--color-primary)] hover:shadow-md transition-all block text-left">
+                <Link key={idx} href={loc.href as any} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4 hover:border-[var(--color-primary)] hover:shadow-md transition-all block text-left">
                   <div className="flex items-center gap-3">
                     <span className="text-3xl">{loc.icon}</span>
                     <h4 className="text-xl font-bold text-[#1A1A2E]">{loc.city}</h4>
